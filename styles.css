@@ -1,0 +1,32 @@
+main .form-control
+{
+    /* center form controls */
+    display: inline-block;
+
+    /* override Bootstrap's 100% width for form controls */
+    width: auto;
+    /* margin-bottom:75px; */
+}
+
+/* Always set the map height explicitly to define the size of the div
+       * element that contains the map. */
+#map {
+    height: 350px;
+    width: 350px;
+}
+
+#pageHeader {
+    height: 275px;
+}
+
+#pageTitle {
+    margin-left:10px;
+}
+
+#welcome {
+    height: 50px;
+    margin-left: 25px;
+}
+
+
+

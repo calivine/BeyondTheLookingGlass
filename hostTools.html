@@ -1,0 +1,35 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Host Tools
+{% endblock %}
+
+{% block main %}
+<div class = "row justify-content-center">
+    <h1>Host Homepage</h1><br>
+</div>
+<div class = "row justify-content-center">
+    <h2>{{ details[0][0] }}</h2>
+</div>
+<div class = "row justify-content-center">
+    <div class = "col-lg-2 align-item-center">
+        <a href = "{{ url_for('room') }}">Add Room</a><br>
+        <a href = "{{ url_for('upload_interior', home = session.name) }}">Upload Interior Photo</a>
+    </div>
+    {% for reservation in reservations %}
+    <div class = "col-lg-2 align-items-center">
+        Room: {{ reservation[3] }} <br>
+        Check-In: {{ reservation[1] }} <br>
+        Check-Out: {{ reservation[2] }} <br>
+
+    </div>
+    {% endfor %}
+</div>
+<div class = "row">
+    {% for detail in details %}
+    <img src = "{{ url_for('static', filename = detail[2]) }}" alt = "Image"/>
+    {% endfor %}
+</div>
+
+
+{% endblock %}

@@ -1,0 +1,10 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Error
+{% endblock %}
+
+{% block main %}
+    <h1>Not Available<br></h1>
+    <a class="btn btn-link" href="{{ url_for('details', home=home) }}">Return</a>
+{% endblock %}

@@ -1,0 +1,23 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Room Registration: Success
+{% endblock %}
+
+{% block main %}
+    <div class = "row justify-content-center">
+        <h1>Success</h1>
+    </div>
+    <div class = "row justify-content-center">
+        <a class = "btn btn-link" href = "{{ url_for('room') }}">Register Room</a><br>
+    </div>
+    <div class = "row justify-content-center">
+        <a class = "btn btn-link" href = "{{ url_for('hostTools') }}">HostTools</a>
+    </div>
+    <div class = "row justify-content-center">
+        <a class = "btn btn-link" href = "{{ url_for('index') }}">Home</a>
+    </div>
+
+
+
+{% endblock %}
