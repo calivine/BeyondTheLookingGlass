@@ -1,0 +1,27 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Interior Image Upload
+{% endblock %}
+
+{% block main %}
+    <div class = "row">
+        <h1>Picture upload</h1>
+    </div>
+    <div class = "row">
+        <div class = "col-lg-4">
+            <p>Upload photos of your property's interior here.<br>
+            Maximum image dimensions: 450 x 325 pixels.</p>
+        </div>
+        <div class = "col-lg-4">
+            <form action="{{ url_for('upload_interior', home = home) }}" method = "post" enctype = "multipart/form-data">
+                <div class = "form-group">
+                    <input class = "form-control" name = "file" type = "file">
+                </div>
+                <button class="btn btn-default">Submit</button>
+            </form>
+        </div>
+    </div>
+
+
+{% endblock %}

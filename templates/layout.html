@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+
+<html lang = "en">
+
+    <head>
+
+        <!-- https://developer.mozilla.org/en-US/docs/Web/HTML/Element/meta -->
+        <meta charset = "utf-8"/>
+        <meta content = "initial-scale=1, width = device-width" name = "viewport"/>
+
+        <!-- Bootstrap and other style sheets -->
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
+        <!-- Personal CSS stylesheet -->
+        <link href = "{{ url_for('static', filename = 'styles.css') }}" rel = "stylesheet"/>
+
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+
+
+        <title>BYtLG: B&B{% block title %}{% endblock %}</title>
+
+    </head>
+    <body>
+        <div class = "container-fluid">
+            <nav class="navbar navbar-expand-lg">
+
+                {% if session.user_id %}
+                    <a href = "{{ url_for('index') }}">
+                        <img alt = "Home" src = "{{ url_for('static', filename = 'kkshadow.png') }}" />
+                    </a>
+                    <div id = "pageTitle">
+                        <h6>Beyond the Looking Glass</h6>
+                    </div>
+                    <ul class = "nav navbar-nav ml-auto">
+                        {% if session.type == "Host" %}
+                            <li class = "nav-item">
+                                <a class = "nav-link" href = "{{ url_for('hostTools') }}">Host Tools</a>
+                            </li>
+                        {% else %}
+                            <li class = "nav-item">
+                                <a class = "nav-link" href = "{{ url_for('itinerary') }}">My Account</a>
+                            </li>
+                        {% endif %}
+                        <li class = "nav-item">
+                            <a class = "nav-link" href = "{{ url_for('logout') }}">Logout</a>
+                        </li>
+                    </ul>
+                {% else %}
+                    <a href = "{{ url_for('index') }}">
+                        <img src = "{{ url_for('static', filename = 'kkshadow.png') }}" />
+                    </a>
+                    <div id = "pageTitle">
+                        <h6>Beyond the Looking Glass</h6>
+                    </div>
+                    <ul class="nav navbar-nav ml-auto">
+                        <li class = "nav-item">
+                            <a class = "nav-link" href = "{{ url_for('host') }}">Host</a>
+                        </li>
+                        <li class = "nav-item">
+                            <a class = "nav-link" href = "{{ url_for('register') }}">Sign Up</a>
+                        </li>
+                        <li class = "nav-item">
+                            <a class = "nav-link" href = "{{ url_for('login') }}">Log In</a>
+                        </li>
+                    </ul>
+                {% endif %}
+            </nav>
+            <main>
+                {% block main %}{% endblock %}
+
+            </main>
+
+        </div>
+        {% block footer %}
+        <nav class = "navbar navbar-expand-lg justify-content-center">
+            <a class = "nav-link" href = "{{ url_for('hostlogin') }}">Host Log In</a>
+            &copy;2018
+        </nav>
+        {% endblock %}
+    </body>
+</html>

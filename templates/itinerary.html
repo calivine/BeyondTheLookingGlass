@@ -1,0 +1,33 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Itinerary
+{% endblock %}
+
+{% block main %}
+<div class = "row align-items-center justify-content-center" id = "pageHeader">
+    <h1>Itinerary</h1>
+</div>
+<div class = "row justify-content-center" style = "height: 725px;">
+    <div class = "col-lg-2">
+    {% for entry in itinerary %}
+        <div>
+            Location: <strong>{{ entry[4] }}</strong><br>
+            Room: {{ entry[2] }}<br>
+            Guests: {{ entry[3] }}
+        </div>
+        <div>Check-in:</div>
+        <div id = "in">
+            {{ entry[0] }}
+        </div>
+        <div>Check-out:</div>
+        <div id = "out">
+            {{ entry[1] }}
+        </div>
+    {% endfor %}
+    </div>
+</div>
+<script src = "{{ url_for('static', filename = 'js/itineraryscript.js') }}"></script>
+
+
+{% endblock %}

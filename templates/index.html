@@ -1,0 +1,26 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Home Landing Page
+{% endblock %}
+
+{% block main %}
+<div class = "row" id = "welcome">
+{% if session.user_id %}
+    <h2>Welcome, {{ name }}!</h2>
+{% endif %}
+</div>
+<div class = "row">
+{% for detail in property %}
+    <div class = "col-lg-4 align-item-center">
+        <a href = "{{ url_for('details', home = detail[0]) }}">
+            <img src = "{{ url_for('static', filename = detail[2]) }}" alt = "Main property"/>
+        </a>
+        <h2>{{ detail[0] }}</h2>
+        <p>{{ detail[1] }}</p>
+    </div>
+{% endfor %}
+</div>
+
+<!-- <div class = "row" style = "height: 300px;"></div> -->
+{% endblock %}

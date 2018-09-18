@@ -1,0 +1,42 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Booking
+{% endblock %}
+
+{% block main %}
+    <h1>{{ home }}</h1>
+    <h1>{{ room }}</h1>
+    <h2> {{ checkin }} to {{ checkout }}</h2>
+    <h3> Confirm booking below</h3>
+        <div id = "bookform">
+            <form action = "{{ url_for('booking', home = home, checkin = checkin, checkout = checkout, room = room) }}" id = "booking2" method = "post">
+                {% if session.user_id %}
+                <div class = "form-group">
+                    <input class = "form-control" autocomplete = "off" min = "0" name = "guest" placeholder="Guests" type = "number">
+                </div>
+                {% else %}
+                <h2>First time user? Fill out the form below to sign up and book your stay </h2>
+                <div class = "form-group">
+                    <input class = "form-control" autocomplete = "off" min = "0" name = "guest" placeholder="Guests" type = "number">
+                </div>
+                <div class = "form-group">
+                    <input class = "form-control" autocomplete = "off" name = "email" placeholder = "Email" type = "email">
+                </div>
+                <div class = "form-group">
+                    <input class = "form-control" autocomplete = "off" name = "first" placeholder=  "First name" type = "text">
+                </div>
+                <div class = "form-group">
+                    <input class = "form-control" autocomplete = "off" name = "last" placeholder = "Last name" type = "text">
+                </div>
+                <div class = "form-group">
+                    <input class = "form-control" autocomplete = "off" name = "password" placeholder = "Password" type = "password">
+                </div>
+                {% endif %}
+                <button class = "btn btn-default" style = "width: 198px; padding: 6px 12px 6px 12px; border: 1px;">Confirm</button>
+            </form>
+        </div>
+        <a class = "btn btn-link" href = "{{ url_for('details', home = home) }}">Return</a>
+
+    <script src = "{{ url_for('static', filename = 'js/bookingscript.js') }}"></script>
+{% endblock %}
